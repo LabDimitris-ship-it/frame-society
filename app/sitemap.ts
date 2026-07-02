@@ -13,10 +13,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const businessPages = businesses.map((business) => ({
+  const businessPages: MetadataRoute.Sitemap = businesses.map((business) => ({
     url: `${base}/${business.category}/${business.slug}`,
     lastModified: new Date(),
-    changeFrequency: "weekly" as const,
+    changeFrequency: "weekly",
     priority: 0.8,
   }));
 
