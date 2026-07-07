@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
+import MobileNav from "@/components/mobile/MobileNav";
 export const metadata: Metadata = {
   metadataBase: new URL("https://frame-society.vercel.app"),
 
@@ -100,7 +100,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+
+        <MobileNav />
+      </body>
     </html>
   );
 }
