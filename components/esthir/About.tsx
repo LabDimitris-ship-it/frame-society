@@ -1,7 +1,7 @@
+import { Business } from "@/data/businesses";
+
 type Props = {
-  business: {
-    about: string;
-  };
+  business: Business;
 };
 
 export default function About({ business }: Props) {
@@ -14,7 +14,7 @@ export default function About({ business }: Props) {
         </h2>
 
         <p className="mx-auto max-w-3xl text-center text-lg leading-9 text-gray-700">
-          {business.about}
+          {business.about ?? "More information coming soon."}
         </p>
 
       </div>
