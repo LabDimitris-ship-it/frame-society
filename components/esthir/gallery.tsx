@@ -2,67 +2,55 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { Business } from "@/data/businesses";
 
-const images = [
-  "/images/esthir/gallery/1.jpg",
-  "/images/esthir/gallery/2.jpg",
-  "/images/esthir/gallery/3.jpg",
-  "/images/esthir/gallery/4.jpg",
-  "/images/esthir/gallery/5.jpg",
-];
+type Props = {
+  business: Business;
+};
 
-export default function Gallery() {
+export default function Gallery({ business }: Props) {
   const [selected, setSelected] = useState<number | null>(null);
 
-  const next = () => {
-    if (selected === null) return;
-    setSelected((selected + 1) % images.length);
-  };
+  const images = business.gallery ?? [];
 
-  const prev = () => {
-    if (selected === null) return;
-    setSelected((selected - 1 + images.length) % images.length);
-  };
+  if (images.length === 0) return null;
 
   return (
     <>
-      <section className="bg-[#F8F5EF] py-24">
+      <section className="bg-[#F8F5EF] py-20">
         <div className="mx-auto max-w-7xl px-6">
 
-          <div className="mb-14 text-center">
+          <div className="mb-12 text-center">
             <p className="tracking-[6px] uppercase text-[#b89b67]">
               Gallery
             </p>
 
             <h2 className="mt-4 text-5xl font-light text-zinc-900">
-              Our Beauty Studio
+              {business.name}
             </h2>
           </div>
 
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-
-            {images.map((img, index) => (
+            {images.map((image, index) => (
               <button
-                key={img}
+                key={image}
                 onClick={() => setSelected(index)}
                 className="group relative overflow-hidden rounded-3xl"
               >
                 <div className="relative h-80">
-
                   <Image
-                    src={img}
-                    alt=""
+                    src={image}
+                    alt={business.name}
                     fill
                     className="object-cover transition duration-700 group-hover:scale-110"
                   />
 
-                  <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/20" />
-
+                  <div className="absolute inset-0 bg-black/10 opacity-0 transition group-hover:opacity-100" />
                 </div>
               </button>
             ))}
-
           </div>
+
         </div>
       </section>
 
@@ -76,30 +64,16 @@ export default function Gallery() {
             ×
           </button>
 
-          <button
-            onClick={prev}
-            className="absolute left-8 text-5xl text-white"
-          >
-            ←
-          </button>
-
           <div className="relative h-[85vh] w-[90vw] max-w-6xl">
 
             <Image
               src={images[selected]}
-              alt=""
+              alt={business.name}
               fill
               className="object-contain"
             />
 
           </div>
-
-          <button
-            onClick={next}
-            className="absolute right-8 text-5xl text-white"
-          >
-            →
-          </button>
 
         </div>
       )}

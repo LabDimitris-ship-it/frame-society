@@ -3,8 +3,11 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import Hero from "@/components/business/Hero";
-import About from "@/components/esthir/About";
 import ActionButtons from "@/components/business/ActionButtons";
+
+import About from "@/components/spade/About";
+import Gallery from "@/components/spade/Gallery";
+import Services from "@/components/spade/Services";
 
 type Props = {
   params: Promise<{
@@ -12,7 +15,9 @@ type Props = {
   }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
   const { slug } = await params;
 
   const business = businesses.find(
@@ -36,7 +41,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function BusinessPage({ params }: Props) {
+export default async function BusinessPage({
+  params,
+}: Props) {
   const { slug } = await params;
 
   const business = businesses.find(
@@ -47,15 +54,17 @@ export default async function BusinessPage({ params }: Props) {
     notFound();
   }
 
-return (
-  <main className="bg-white">
+  return (
+    <main className="bg-white">
+      <Hero business={business} />
 
-    <Hero business={business} />
+      <ActionButtons business={business} />
 
-    <ActionButtons business={business} />
+      <About business={business} />
 
-    <About business={business} />
+      <Gallery />
 
-  </main>
-);
+      <Services business={business} />
+    </main>
+  );
 }
