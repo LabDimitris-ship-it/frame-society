@@ -65,7 +65,7 @@ export default async function BusinessPage({ params }: Props) {
 
       <Booking />
 
-      <Gallery />
+      <Gallery business={business} />
 
       <Map />
 
