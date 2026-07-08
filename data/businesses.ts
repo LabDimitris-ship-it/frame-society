@@ -169,7 +169,7 @@ export const businesses: Business[] = [
 
     hero: "/images/spade/hero.png",
 
-    logo: "/images/spade/logo.png",
+    logo: "/images/spade/hero.png",
 
     ogImage: "/images/spade/hero.png",
 

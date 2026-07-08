@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 
 import Hero from "@/components/business/Hero";
 import About from "@/components/esthir/About";
+import ActionButtons from "@/components/business/ActionButtons";
 
 type Props = {
   params: Promise<{
@@ -46,10 +47,15 @@ export default async function BusinessPage({ params }: Props) {
     notFound();
   }
 
-  return (
-    <main className="bg-black text-white">
-      <Hero business={business} />
-      <About business={business} />
-    </main>
-  );
+return (
+  <main className="bg-white">
+
+    <Hero business={business} />
+
+    <ActionButtons business={business} />
+
+    <About business={business} />
+
+  </main>
+);
 }

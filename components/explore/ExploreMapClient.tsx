@@ -41,10 +41,7 @@ function FlyToBusiness() {
     if (!business?.coordinates) return;
 
     map.flyTo(
-      [
-        business.coordinates.lat,
-        business.coordinates.lng,
-      ],
+      [business.coordinates.lat, business.coordinates.lng],
       17,
       {
         animate: true,
@@ -76,6 +73,8 @@ function ClosePreviewOnMapClick() {
 }
 
 export default function ExploreMapClient() {
+  console.log("ExploreMapClient mounted");
+
   const {
     search,
     category,
@@ -129,7 +128,6 @@ export default function ExploreMapClient() {
           eventHandlers={{
             click: (e) => {
               e.originalEvent.stopPropagation();
-
               setSelected(business.slug);
               setActiveBusiness(business.slug);
             },
