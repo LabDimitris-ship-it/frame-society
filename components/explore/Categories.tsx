@@ -14,48 +14,48 @@ const categories = [
   {
     title: "Coffee",
     subtitle: "Specialty Coffee & Brunch",
-    slug: "coffee",
-    count: 12,
+    href: "/coffee",
+    count: 0,
     icon: Coffee,
     color: "from-amber-50 to-white",
   },
   {
     title: "Food",
     subtitle: "Restaurants & Fine Dining",
-    slug: "food",
-    count: 18,
+    href: "/food",
+    count: 0,
     icon: UtensilsCrossed,
     color: "from-orange-50 to-white",
   },
   {
     title: "Hair",
     subtitle: "Barbers & Hair Salons",
-    slug: "hair",
-    count: 5,
+    href: "/hair/spade-grooming",
+    count: 1,
     icon: Scissors,
     color: "from-slate-50 to-white",
   },
   {
     title: "Beauty",
     subtitle: "Spa • Nails • Aesthetics",
-    slug: "beauty",
-    count: 7,
+    href: "/beauty/esthir",
+    count: 1,
     icon: Sparkles,
     color: "from-pink-50 to-white",
   },
   {
     title: "Nightlife",
     subtitle: "Bars & Cocktails",
-    slug: "nightlife",
-    count: 9,
+    href: "/nightlife",
+    count: 0,
     icon: Martini,
     color: "from-violet-50 to-white",
   },
   {
     title: "Beach",
     subtitle: "Beach Bars & Resorts",
-    slug: "beach",
-    count: 14,
+    href: "/beach",
+    count: 0,
     icon: Waves,
     color: "from-sky-50 to-white",
   },
@@ -65,7 +65,6 @@ export default function CategoriesSection() {
   return (
     <section className="bg-[#fafafa] py-28">
       <div className="mx-auto max-w-7xl px-6">
-
         <div className="text-center">
           <span className="rounded-full bg-black px-5 py-2 text-sm uppercase tracking-[0.3em] text-white">
             Categories
@@ -83,8 +82,8 @@ export default function CategoriesSection() {
         <div className="mt-20 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
           {categories.map((category) => (
             <Link
-              key={category.slug}
-              href={`/explore?category=${category.slug}`}
+              key={category.title}
+              href={category.href}
               className={`group rounded-[34px] border border-zinc-200 bg-gradient-to-br ${category.color} p-10 transition-all duration-300 hover:-translate-y-2 hover:border-black hover:shadow-2xl`}
             >
               <div className="flex items-center justify-between">
@@ -111,7 +110,6 @@ export default function CategoriesSection() {
             </Link>
           ))}
         </div>
-
       </div>
     </section>
   );

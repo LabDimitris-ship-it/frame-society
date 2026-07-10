@@ -1,11 +1,11 @@
-import HomeV2 from "./home-v2/page";
+import HomeV3 from "./home-v3/page";
 import HomeMobile from "@/components/mobile/v2/HomeMobile";
 
 export default function Home() {
   return (
     <>
       <div className="hidden md:block">
-        <HomeV2 />
+        <HomeV3 />
       </div>
 
       <div className="md:hidden">
